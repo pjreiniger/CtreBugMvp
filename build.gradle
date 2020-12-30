@@ -6,6 +6,13 @@ plugins {
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
+// wpi.maven.useFrcMavenLocalDevelopment = true
+// wpi.wpilibVersion = '2021.424242.+'
+
+// repositories {
+//     mavenLocal()
+// }
+
 def ROBOT_MAIN_CLASS = "frc.robot.Main"
 
 // Define my targets (RoboRIO) and artifacts (deployable files)
@@ -57,7 +64,7 @@ dependencies {
     // Enable simulation gui support. Must check the box in vscode to enable support
     // upon debugging
     simulation wpi.deps.sim.gui(wpi.platforms.desktop, false)
-    simulation wpi.deps.sim.driverstation(wpi.platforms.desktop, false)
+    // simulation wpi.deps.sim.driverstation(wpi.platforms.desktop, false)
 
     // Websocket extensions require additional configuration.
     // simulation wpi.deps.sim.ws_server(wpi.platforms.desktop, false)

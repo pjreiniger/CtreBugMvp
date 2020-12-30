@@ -7,14 +7,25 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ExampleSubsystem extends SubsystemBase {
+
+  private final WPI_TalonSRX mTalon;
+
   /**
    * Creates a new ExampleSubsystem.
    */
   public ExampleSubsystem() {
+    mTalon = new WPI_TalonSRX(0);
 
+    mTalon.configMotionAcceleration(800);
+    mTalon.configMotionCruiseVelocity(800);
+    mTalon.config_kP(0, .01);
+    mTalon.config_kF(0, .02);
   }
 
   @Override
@@ -22,8 +33,12 @@ public class ExampleSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  @Override
-  public void simulationPeriodic() {
-    // This method will be called once per scheduler run during simulation
+  public void goToPosition()
+  {
+    mTalon.set(ControlMode.MotionMagic, 20000);
+  }
+
+  public void stop() {
+    mTalon.set(0);
   }
 }
